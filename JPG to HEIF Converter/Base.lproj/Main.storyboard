@@ -707,14 +707,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="JPG_to_HEIF_Converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="85"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="161"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-b4-jIf">
-                                <rect key="frame" x="16" y="32" width="448" height="21"/>
+                                <rect key="frame" x="16" y="32" width="448" height="97"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="duI-Ep-9mW">
-                                        <rect key="frame" x="173" y="-7" width="102" height="32"/>
+                                        <rect key="frame" x="173" y="69" width="102" height="32"/>
                                         <buttonCell key="cell" type="push" title="Open files" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="93x-s1-82K">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -723,11 +723,26 @@
                                             </connections>
                                         </buttonCell>
                                     </button>
+                                    <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9Cy-wp-cDd">
+                                        <rect key="frame" x="174" y="24" width="100" height="45"/>
+                                    </progressIndicator>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-4a-0oz">
+                                        <rect key="frame" x="175" y="0.0" width="98" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1 of 2 complete" id="dRN-in-KeR">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
@@ -740,7 +755,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="completeLabel" destination="Kw5-4a-0oz" id="ArS-24-8jp"/>
                         <outlet property="openFilesButton" destination="93x-s1-82K" id="S7R-kp-Y5G"/>
+                        <outlet property="progressIndicator" destination="9Cy-wp-cDd" id="7dS-zs-K9B"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
