@@ -48,17 +48,10 @@ extension ViewController {
 			for imageUrl in panel.urls {
 				guard let source = CGImageSourceCreateWithURL(imageUrl as CFURL, nil) else { continue }
 				
-//				let imageProperties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any]
-				let image = CGImageSourceCreateImageAtIndex(source, 0, nil)
-				
-//				let options = [
-//					kCGImageSourceCreateThumbnailFromImageIfAbsent as String: true,
-//					kCGImageSourceThumbnailMaxPixelSize as String: 320
-//				] as [String: Any]
-//				let thumb = CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary)
+				guard let image = CGImageSourceCreateImageAtIndex(source, 0, nil) else { continue }
+				guard let imageMetadata = CGImageSourceCopyMetadataAtIndex(source, 0, nil) else { continue }
 				
 				let pathWithName = imageUrl.deletingPathExtension()
-				
 				guard let outputUrl = URL(string: pathWithName.absoluteString + ".heic") else { continue }
 				
 				guard let destination = CGImageDestinationCreateWithURL(
@@ -69,7 +62,7 @@ extension ViewController {
 					fatalError("unable to create CGImageDestination")
 				}
 				
-				CGImageDestinationAddImage(destination, image!, nil)
+				CGImageDestinationAddImageAndMetadata(destination, image, imageMetadata, nil)
 				CGImageDestinationFinalize(destination)
 				
 			}
