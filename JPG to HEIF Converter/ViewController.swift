@@ -9,12 +9,23 @@
 import Cocoa
 import AVFoundation
 
+
 class ViewController: NSViewController {
+	
+	// MARK: - Outlets
+	
+	/// Open files button
+	@IBOutlet fileprivate weak var openFilesButton: NSButtonCell!
+	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
+		
+		if #available(macOS 10.13, *) {
+			self.openFilesButton.isEnabled = true
+		} else {
+			self.openFilesButton.isEnabled = false
+		}
 	}
 
 	override var representedObject: Any? {
@@ -34,6 +45,7 @@ extension ViewController {
 	///
 	/// - Parameter sender: NSButton
 	@IBAction func openFilesButtonTouched(_ sender: Any) {
+		
 		let panel = NSOpenPanel.init()
 		panel.allowsMultipleSelection = true
 		panel.canChooseDirectories = false

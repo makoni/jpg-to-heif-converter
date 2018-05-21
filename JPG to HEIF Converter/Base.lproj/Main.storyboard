@@ -739,6 +739,9 @@
                             <constraint firstItem="QnE-b4-jIf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="16" id="uk8-Sm-86Q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="openFilesButton" destination="93x-s1-82K" id="S7R-kp-Y5G"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
