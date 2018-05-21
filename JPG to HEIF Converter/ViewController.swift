@@ -128,10 +128,13 @@ extension ViewController {
 			
 			let group = DispatchGroup()
 			
+			let serialQueue = DispatchQueue(label: "me.spaceinbox.jpgtoheifconverter")
+			
 			for imageUrl in panel.urls {
 				group.enter()
 				
-				DispatchQueue.global(qos: .utility).async { [weak self] in
+				
+				serialQueue.async { [weak self] in
 					
 					guard let `self` = self else { return }
 					
