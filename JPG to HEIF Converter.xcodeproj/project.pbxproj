@@ -11,6 +11,7 @@
 		2407286820B313EE00E704B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407286720B313EE00E704B8 /* ViewController.swift */; };
 		2407286A20B313F000E704B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2407286920B313F000E704B8 /* Assets.xcassets */; };
 		2407286D20B313F000E704B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2407286B20B313F000E704B8 /* Main.storyboard */; };
+		2407287720B34D5500E704B8 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407287620B34D5500E704B8 /* MainWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2407286E20B313F000E704B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2407286F20B313F000E704B8 /* JPG_to_HEIF_Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JPG_to_HEIF_Converter.entitlements; sourceTree = "<group>"; };
 		2407287520B31FF300E704B8 /* JPG to HEIF Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JPG to HEIF Converter.entitlements"; sourceTree = "<group>"; };
+		2407287620B34D5500E704B8 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				2407287520B31FF300E704B8 /* JPG to HEIF Converter.entitlements */,
 				2407286520B313EE00E704B8 /* AppDelegate.swift */,
+				2407287620B34D5500E704B8 /* MainWindowController.swift */,
 				2407286720B313EE00E704B8 /* ViewController.swift */,
 				2407286920B313F000E704B8 /* Assets.xcassets */,
 				2407286B20B313F000E704B8 /* Main.storyboard */,
@@ -142,6 +145,7 @@
 			files = (
 				2407286820B313EE00E704B8 /* ViewController.swift in Sources */,
 				2407286620B313EE00E704B8 /* AppDelegate.swift in Sources */,
+				2407287720B34D5500E704B8 /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -302,6 +307,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
