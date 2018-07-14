@@ -41,7 +41,7 @@ class ViewController: NSViewController {
 	/// Processed images number
 	fileprivate var processedImages: Int = 0 {
 		didSet {
-			self.completeLabel.stringValue = "\(self.processedImages) of \(self.totalImages)"
+			self.completeLabel.stringValue = "\(self.processedImages)" + NSLocalizedString("of", comment: "conjunction") + "\(self.totalImages)"
 			
 			self.progressIndicator.doubleValue = Double(self.processedImages)
 		}

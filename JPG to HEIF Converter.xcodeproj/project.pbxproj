@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047E832220FA3D2400EDD4B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047E832420FA3D2400EDD4B0 /* Localizable.strings */; };
 		2407286620B313EE00E704B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407286520B313EE00E704B8 /* AppDelegate.swift */; };
 		2407286820B313EE00E704B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407286720B313EE00E704B8 /* ViewController.swift */; };
 		2407286A20B313F000E704B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2407286920B313F000E704B8 /* Assets.xcassets */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047E831F20FA3A7D00EDD4B0 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		047E832320FA3D2400EDD4B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		047E832520FA3D2800EDD4B0 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2407286220B313EE00E704B8 /* JPG to HEIF Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPG to HEIF Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2407286520B313EE00E704B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2407286720B313EE00E704B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 				2407286B20B313F000E704B8 /* Main.storyboard */,
 				2407286E20B313F000E704B8 /* Info.plist */,
 				2407286F20B313F000E704B8 /* JPG_to_HEIF_Converter.entitlements */,
+				047E832420FA3D2400EDD4B0 /* Localizable.strings */,
 			);
 			path = "JPG to HEIF Converter";
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 2407285920B313EE00E704B8;
 			productRefGroup = 2407286320B313EE00E704B8 /* Products */;
@@ -132,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2407286A20B313F000E704B8 /* Assets.xcassets in Resources */,
+				047E832220FA3D2400EDD4B0 /* Localizable.strings in Resources */,
 				2407286D20B313F000E704B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,10 +159,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		047E832420FA3D2400EDD4B0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				047E832320FA3D2400EDD4B0 /* en */,
+				047E832520FA3D2800EDD4B0 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2407286B20B313F000E704B8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2407286C20B313F000E704B8 /* Base */,
+				047E831F20FA3A7D00EDD4B0 /* tr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -167,6 +184,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -227,6 +245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
