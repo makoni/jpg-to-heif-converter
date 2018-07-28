@@ -1,0 +1,84 @@
+
+/* Class = "NSMenuItem"; title = "JPG to HEIF Converter"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "JPG to HEIF Converter";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Tam Ekran";
+
+/* Class = "NSMenuItem"; title = "Quit JPG to HEIF Converter"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Çık JPG to HEIF Converter";
+
+/* Class = "NSMenuItem"; title = "About JPG to HEIF Converter"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Hakkında JPG to HEIF Converter";
+
+/* Class = "NSButtonCell"; title = "Open files"; ObjectID = "93x-s1-82K"; */
+"93x-s1-82K.title" = "Fotoğrafları Seç";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Ana Menü";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Kapat";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Yardım";
+
+/* Class = "NSMenuItem"; title = "JPG to HEIF Converter Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "JPG to HEIF Converter Yardım";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Görüntü";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "Görüntü";
+
+/* Class = "NSWindow"; title = "Convert images to HEIF"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Fotoğrafları HEIF formatına çevir";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Hepsini Göster";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Hepsini Öne Getir";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Servisler";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Küçült";
+
+/* Class = "NSMenuItem"; title = "Hide JPG to HEIF Converter"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Gizle JPG to HEIF Converter";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Yakınlaştır";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Pencere";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Diğerlerini Gizle";
+
+/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "aTl-1u-JFS"; */
+"aTl-1u-JFS.title" = "Baskı…";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Pencere";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Dosya";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Dosya";
+
+/* Class = "NSTextFieldCell"; title = "1 of 2 complete"; ObjectID = "dRN-in-KeR"; */
+"dRN-in-KeR.title" = "1 ; 2 tamamlandı";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Servisler";
+
+/* Class = "NSMenu"; title = "JPG to HEIF Converter"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "JPG to HEIF Converter";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Yardım";

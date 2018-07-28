@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  JPG to HEIF Converter
+
+  Created by Abuzer Emre Osmanoğlu on 14.07.2018.
+  Copyright © 2018 Sergey Armodin. All rights reserved.
+*/
+
+"of" = " ; ";
+"Converting complete" = "Dönüşüm tamamlandı";
