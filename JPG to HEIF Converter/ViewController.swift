@@ -138,6 +138,10 @@ extension ViewController {
 		}
 	}
 	
+    /// Determine file types in a list and process each item accordingly
+    ///
+    /// - Parameter urls: [URL]
+    /// - Parameter deletingOriginals: Boolean flag to indicate whether images should be preserved in their original format after conversion
     func processItems(_ urls: [URL], deletingOriginals: Bool) {
         converterState = .converting
         totalImages = 0
@@ -164,6 +168,12 @@ extension ViewController {
         
     }
     
+    /// Traverse directories and convert any images to .heic
+    ///
+    /// - Parameter url: the file path to be processed
+    /// - Parameter group: the DispatchGroup managing conversion work
+    /// - Parameter queue: the serial queue to contain conversion work
+    /// - Parameter deletingOriginals: Boolean flag to indicate whether images should be preserved in their original format after conversion
     func processFolder(_ url: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         guard case .directory = FileType(url) else { return }
         
@@ -186,6 +196,12 @@ extension ViewController {
         
     }
     
+    /// Convert a valid image to .heic
+    ///
+    /// - Parameter imageUrl: the file path to be converted
+    /// - Parameter group: the DispatchGroup managing conversion work
+    /// - Parameter queue: the serial queue to contain conversion work
+    /// - Parameter deletingOriginals: Boolean flag to indicate whether images should be preserved in their original format after conversion
     func convertImage(_ imageUrl: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         
         totalImages += 1
@@ -231,6 +247,11 @@ extension ViewController {
 
 extension ViewController {
     
+    /// Update the contents.json file in an imageset to reflect new file type
+    ///
+    /// - Parameter url: the file path to be processed
+    /// - Parameter group: the DispatchGroup managing conversion work
+    /// - Parameter queue: the serial queue to contain conversion work
     func updateContentsFile(_ url: URL, group: DispatchGroup, queue: DispatchQueue) {
         guard case .json = FileType(url) else { return }
         
@@ -248,6 +269,7 @@ extension ViewController {
         
     }
     
+    /// Attempt to translate a file path into JSON, process it, and overwrite the file with the result
     private func updateJSONContents(_ url: URL) throws {
         guard let json = try JSONSerialization.jsonObject(with: Data(contentsOf: url), options: .mutableLeaves) as? JSON else { return }
         let processed = try JSONSerialization.data(withJSONObject: processJSON(json), options: .prettyPrinted)
@@ -255,6 +277,7 @@ extension ViewController {
         
     }
     
+    /// Traverse a json object, changing only the path extension of values keyed for filename
     private func processJSON(_ json: JSON) -> JSON {
         var json = json
         for (k, v) in json {
