@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -184,8 +184,18 @@
                                             </connections>
                                         </buttonCell>
                                     </button>
+                                    <button verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TvC-d6-ANv">
+                                        <rect key="frame" x="157" y="186" width="135" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Keep Original Files" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oxZ-yn-cLQ">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="keepOriginalsCheckboxTouched:" target="XfG-lQ-9wD" id="G46-Fi-Mis"/>
+                                        </connections>
+                                    </button>
                                     <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="9Cy-wp-cDd">
-                                        <rect key="frame" x="174" y="32" width="100" height="171"/>
+                                        <rect key="frame" x="0.0" y="32" width="448" height="141"/>
                                     </progressIndicator>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-4a-0oz">
                                         <rect key="frame" x="175" y="0.0" width="98" height="17"/>
@@ -201,8 +211,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -226,6 +238,7 @@
                     </view>
                     <connections>
                         <outlet property="completeLabel" destination="Kw5-4a-0oz" id="ArS-24-8jp"/>
+                        <outlet property="keepOriginalsCheckbox" destination="TvC-d6-ANv" id="aCP-0T-AqB"/>
                         <outlet property="openFilesButton" destination="93x-s1-82K" id="S7R-kp-Y5G"/>
                         <outlet property="progressIndicator" destination="9Cy-wp-cDd" id="7dS-zs-K9B"/>
                     </connections>

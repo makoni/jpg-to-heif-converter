@@ -36,6 +36,9 @@ class ViewController: NSViewController {
 	
 	/// Complete label
 	@IBOutlet fileprivate weak var completeLabel: NSTextField!
+    
+    /// Keep Originals checkbox
+    @IBOutlet fileprivate weak var keepOriginalsCheckbox: NSButton!
 	
 	
 	// MARK: - Properties
@@ -88,6 +91,9 @@ class ViewController: NSViewController {
 		}
 		
 		self.converterState = .launched
+        
+        keepOriginalsCheckbox.state = UserDefaultsManager.preferToRemoveOriginals ? .off : .on
+        
 	}
 
 	override var representedObject: Any? {
@@ -102,6 +108,10 @@ class ViewController: NSViewController {
 
 // MARK: - Actions
 extension ViewController {
+    
+    @IBAction func keepOriginalsCheckboxTouched(_ sender: Any) {
+        UserDefaultsManager.preferToRemoveOriginals = (keepOriginalsCheckbox.state == .off)
+    }
 	
 	/// Open files button touched
 	///
@@ -124,11 +134,11 @@ extension ViewController {
 			guard result == .OK else { return }
 			guard panel.urls.isEmpty == false else { return }
 			
-            self.processItems(panel.urls)
+            self.processItems(panel.urls, deletingOriginals: UserDefaultsManager.preferToRemoveOriginals)
 		}
 	}
 	
-    func processItems(_ urls: [URL]) {
+    func processItems(_ urls: [URL], deletingOriginals: Bool) {
         converterState = .converting
         totalImages = 0
         processedImages = 0
@@ -139,9 +149,9 @@ extension ViewController {
         for url in urls {
             
             switch FileType(url) {
-            case .image:        convertImage(url, group: group, queue: serialQueue)
+            case .image:        convertImage(url, group: group, queue: serialQueue, deletingOriginals: deletingOriginals)
             case .json:         updateContentsFile(url, group: group, queue: serialQueue)
-            case .directory:    processFolder(url, group: group, queue: serialQueue)
+            case .directory:    processFolder(url, group: group, queue: serialQueue, deletingOriginals: deletingOriginals)
             case .invalid:      continue
             }
 
@@ -154,7 +164,7 @@ extension ViewController {
         
     }
     
-    func processFolder(_ url: URL, group: DispatchGroup, queue: DispatchQueue) {
+    func processFolder(_ url: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         guard case .directory = FileType(url) else { return }
         
         let subPaths = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isDirectoryKey])
@@ -163,7 +173,7 @@ extension ViewController {
 
             switch FileType(path) {
             case .image:
-                convertImage(path, group: group, queue: queue)
+                convertImage(path, group: group, queue: queue, deletingOriginals: deletingOriginals)
                 continue
             case .json:
                 updateContentsFile(path, group: group, queue: queue)
@@ -176,7 +186,7 @@ extension ViewController {
         
     }
     
-    func convertImage(_ imageUrl: URL, group: DispatchGroup, queue: DispatchQueue) {
+    func convertImage(_ imageUrl: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         
         totalImages += 1
         
@@ -203,6 +213,10 @@ extension ViewController {
             
             CGImageDestinationAddImageAndMetadata(destination, image, imageMetadata, nil)
             CGImageDestinationFinalize(destination)
+            
+            if deletingOriginals {
+                try? FileManager.default.removeItem(at: imageUrl)
+            }
             
             DispatchQueue.main.async {
                 self.processedImages += 1
