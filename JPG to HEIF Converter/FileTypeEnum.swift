@@ -16,7 +16,7 @@ enum FileType {
     case invalid
     
     init(_ url: URL) {
-        if FileType.allowedImageTypes.contains(url.pathExtension) {
+        if FileType.allowedImageTypes.contains(url.pathExtension.lowercased()) {
             self = .image
         }
         else if FileType.directoryTypes.contains(url.pathExtension) {
@@ -32,7 +32,7 @@ enum FileType {
     }
     
     static var allowedImageTypes: [String] {
-        return ["jpg", "jpeg", "png"]
+        return ["jpg", "jpeg", "png", "nef", "cr2"]
     }
     
     static var directoryTypes: [String] {

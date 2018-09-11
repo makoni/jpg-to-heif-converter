@@ -129,7 +129,7 @@ extension ViewController {
 		panel.canChooseDirectories = true
 		panel.canChooseFiles = true
 		panel.isFloatingPanel = true
-		panel.allowedFileTypes = ["jpg", "jpeg", "png", "xcassets", "imageset"]
+		panel.allowedFileTypes = ["jpg", "jpeg", "png", "xcassets", "imageset", "nef", "cr2"]
 		
 		panel.beginSheetModal(for: self.view.window!) { [weak self] (result) in
 			guard let `self` = self else { return }
