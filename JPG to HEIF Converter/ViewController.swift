@@ -109,6 +109,9 @@ class ViewController: NSViewController {
 // MARK: - Actions
 extension ViewController {
     
+    /// Keep Original Files checkbox checked/unchecked
+    ///
+    /// - Parameter sender: sender
     @IBAction func keepOriginalsCheckboxTouched(_ sender: Any) {
         UserDefaultsManager.preferToRemoveOriginals = (keepOriginalsCheckbox.state == .off)
     }
