@@ -2,7 +2,7 @@
 
 macOS app for converting from JPG, JPEG and PNG to HEIF (HEIC)
 
-![JPG to HEIF converter](https://cdn.rawgit.com/makoni/jpg-to-heif-converter/55f49610/screenshot.png "Screenshot")
+![JPG to HEIF converter](https://spaceinbox.me/images/jpg-to-heif-converter.png?2 "Screenshot")
 
 With macOS 10.13 and iOS 11 Apple has introduced new file format for images called HEIF (High Efficiency Image File Format). Files has the same quality as old JPG but they are much smaller.
 
