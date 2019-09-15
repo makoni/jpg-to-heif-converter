@@ -111,7 +111,7 @@
 				TargetAttributes = {
 					2407286120B313EE00E704B8 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -319,7 +319,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -338,7 +338,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
