@@ -84,16 +84,10 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		if #available(macOS 10.13, *) {
-			self.openFilesButton.isEnabled = true
-		} else {
-			self.openFilesButton.isEnabled = false
-		}
-		
+		self.openFilesButton.isEnabled = true
 		self.converterState = .launched
         
         keepOriginalsCheckbox.state = UserDefaultsManager.preferToRemoveOriginals ? .off : .on
-        
 	}
 
 	override var representedObject: Any? {
@@ -121,21 +115,19 @@ extension ViewController {
 	/// - Parameter sender: NSButton
 	@IBAction func openFilesButtonTouched(_ sender: Any) {
 		
-		self.totalImages = 0
-		self.processedImages = 0
+		totalImages = 0
+		processedImages = 0
 		
 		let panel = NSOpenPanel.init()
 		panel.allowsMultipleSelection = true
 		panel.canChooseDirectories = true
 		panel.canChooseFiles = true
 		panel.isFloatingPanel = true
-		panel.allowedFileTypes = ["jpg", "jpeg", "png", "xcassets", "imageset", "nef", "cr2"]
+		panel.allowedFileTypes = FileType.allowedImageTypes + FileType.directoryTypes
 		
 		panel.beginSheetModal(for: self.view.window!) { [weak self] (result) in
-			guard let `self` = self else { return }
-			
-			guard result == .OK else { return }
-			guard panel.urls.isEmpty == false else { return }
+			guard let self = self else { return }
+			guard result == .OK, panel.urls.isEmpty == false else { return }
 			
             self.processItems(panel.urls, deletingOriginals: UserDefaultsManager.preferToRemoveOriginals)
 		}
