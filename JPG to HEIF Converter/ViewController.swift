@@ -286,7 +286,10 @@ extension ViewController {
         for (k, v) in json {
             if k == "filename", let value = v as? String {
                 for type in FileType.allowedImageTypes {
-                    json[k] = value.replacingOccurrences(of: ".\(type)", with: ".heic")
+                    let newValue = value.replacingOccurrences(of: ".\(type)", with: ".heic")
+                    if newValue != value {
+                        json[k] = newValue
+                    }
                 }
             } else if let value = v as? JSON {
                 json[k] = processJSON(value)
