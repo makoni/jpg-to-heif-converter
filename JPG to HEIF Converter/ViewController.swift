@@ -180,26 +180,15 @@ extension ViewController {
     func processFolder(_ url: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         guard case .directory = FileType(url) else { return }
         
-        var shouldPass = false
-        if
-            url.pathExtension.lowercased() == "imageset",
-            let json = try? JSONSerialization.jsonObject(with: Data(contentsOf: url.appendingPathComponent("Contents.json")), options: .mutableLeaves) as? JSON,
-            let images = json?["images"] as? [[String: Any]] {
-            for element in images {
-                if !element.lazy.filter({ $0.key.lowercased() == "resizing" }).isEmpty {
-                    shouldPass = true
-                    break
-                }
-            }
-        }
-        
-        if shouldPass {
-            return
-        }
         
         let subPaths = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isDirectoryKey])
+
+        var excludes: [URL] = []
         
         while let path = subPaths?.nextObject() as? URL {
+            if !excludes.lazy.map({ path.contains($0) }).filter({ $0 }).isEmpty {
+                continue
+            }
 
             switch FileType(path) {
             case .image:
@@ -209,6 +198,36 @@ extension ViewController {
                 updateContentsFile(path, group: group, queue: queue)
             case .directory, .invalid:
                 /* subdirectories' contents are also part of the enumerated sequence, so the directories themselves can be ignored */
+                var shouldPass = false
+                if path.pathExtension.lowercased() == "imageset" {
+                    if let subPaths = try? FileManager.default.subpathsOfDirectory(atPath: path.relativePath) {
+                        shouldPass = subPaths
+                            .map({ path.appendingPathComponent($0) })
+                            .map({ ($0, FileType($0)) })
+                            .filter({ $0.1 == FileType.image })
+                            .map({ $0.0 })
+                            .compactMap({ url in
+                                try? Data(contentsOf: url)
+                            })
+                            .map({ $0.count })
+                            .filter({ $0 > 1024*100 })
+                            .isEmpty
+                    }
+                    
+                    if
+                        !shouldPass,
+                        let json = try? JSONSerialization.jsonObject(with: Data(contentsOf: path.appendingPathComponent("Contents.json")), options: .mutableLeaves) as? JSON,
+                        let images = json?["images"] as? [[String: Any]] {
+                        if !images.lazy.map({ !$0.lazy.filter({ $0.key.lowercased() == "resizing" }).isEmpty }).filter({ $0 }).isEmpty {
+                            shouldPass = true
+                        }
+                    }
+                }
+                
+                if shouldPass {
+                    excludes.append(path)
+                }
+                
                 continue
             }
             
@@ -318,4 +337,12 @@ extension ViewController {
         return json
     }
     
+}
+
+extension URL {
+    public func contains(_ other: URL) -> Bool {
+        return autoreleasepool {
+            return resolvingSymlinksInPath().absoluteString.lowercased().contains(other.resolvingSymlinksInPath().absoluteString.lowercased())
+        }
+    }
 }
