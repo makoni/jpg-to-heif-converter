@@ -180,6 +180,23 @@ extension ViewController {
     func processFolder(_ url: URL, group: DispatchGroup, queue: DispatchQueue, deletingOriginals: Bool) {
         guard case .directory = FileType(url) else { return }
         
+        var shouldPass = false
+        if
+            url.pathExtension.lowercased() == "imageset",
+            let json = try? JSONSerialization.jsonObject(with: Data(contentsOf: url.appendingPathComponent("Contents.json")), options: .mutableLeaves) as? JSON,
+            let images = json?["images"] as? [[String: Any]] {
+            for element in images {
+                if !element.lazy.filter({ $0.key.lowercased() == "resizing" }).isEmpty {
+                    shouldPass = true
+                    break
+                }
+            }
+        }
+        
+        if shouldPass {
+            return
+        }
+        
         let subPaths = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isDirectoryKey])
         
         while let path = subPaths?.nextObject() as? URL {
