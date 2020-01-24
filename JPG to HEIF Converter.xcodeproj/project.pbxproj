@@ -64,19 +64,43 @@
 		2407286420B313EE00E704B8 /* JPG to HEIF Converter */ = {
 			isa = PBXGroup;
 			children = (
+				2429921F232E7C6500477607 /* controllers */,
+				24299221232E7CD000477607 /* managers */,
+				24299220232E7CC700477607 /* models */,
 				2407287520B31FF300E704B8 /* JPG to HEIF Converter.entitlements */,
-				2407286520B313EE00E704B8 /* AppDelegate.swift */,
-				2407287620B34D5500E704B8 /* MainWindowController.swift */,
-				2407286720B313EE00E704B8 /* ViewController.swift */,
-				CDF981C82139FB6500EBC90E /* FileTypeEnum.swift */,
-				CD181F4921407A9000D58033 /* UserDefaultsManager.swift */,
-				2407286920B313F000E704B8 /* Assets.xcassets */,
-				2407286B20B313F000E704B8 /* Main.storyboard */,
-				2407286E20B313F000E704B8 /* Info.plist */,
 				2407286F20B313F000E704B8 /* JPG_to_HEIF_Converter.entitlements */,
+				2407286E20B313F000E704B8 /* Info.plist */,
+				2407286520B313EE00E704B8 /* AppDelegate.swift */,
+				2407286920B313F000E704B8 /* Assets.xcassets */,
 				047E832420FA3D2400EDD4B0 /* Localizable.strings */,
+				2407286B20B313F000E704B8 /* Main.storyboard */,
 			);
 			path = "JPG to HEIF Converter";
+			sourceTree = "<group>";
+		};
+		2429921F232E7C6500477607 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2407287620B34D5500E704B8 /* MainWindowController.swift */,
+				2407286720B313EE00E704B8 /* ViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		24299220232E7CC700477607 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CDF981C82139FB6500EBC90E /* FileTypeEnum.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		24299221232E7CD000477607 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				CD181F4921407A9000D58033 /* UserDefaultsManager.swift */,
+			);
+			path = managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,12 +130,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Sergey Armodin";
 				TargetAttributes = {
 					2407286120B313EE00E704B8 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -308,6 +332,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 6;
@@ -321,7 +346,7 @@
 				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -329,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 6;
@@ -342,7 +368,7 @@
 				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
