@@ -209,7 +209,7 @@ extension ViewController {
                     if
                         !shouldPass,
                         let json = try? JSONSerialization.jsonObject(with: Data(contentsOf: path.appendingPathComponent("Contents.json")), options: .mutableLeaves) as? JSON,
-                        let images = json?["images"] as? [[String: Any]] {
+						let images = json["images"] as? [[String: Any]] {
                         if !images.lazy.map({ !$0.lazy.filter({ $0.key.lowercased() == "resizing" }).isEmpty }).filter({ $0 }).isEmpty {
                             shouldPass = true
                         }
