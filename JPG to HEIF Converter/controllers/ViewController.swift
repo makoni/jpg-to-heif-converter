@@ -330,11 +330,3 @@ extension ViewController {
     }
     
 }
-
-extension URL {
-    public func contains(_ other: URL) -> Bool {
-        return autoreleasepool {
-            return resolvingSymlinksInPath().absoluteString.lowercased().contains(other.resolvingSymlinksInPath().absoluteString.lowercased())
-        }
-    }
-}

@@ -9,9 +9,10 @@
 import Foundation
 
 struct UserDefaultsManager {
-	
+	// MARK: - Private properties
 	private static let removeOriginalImagePreferenceKey = "removeOriginalImagePreferenceKey"
 	
+	// MARK: - Public properties
 	static var preferToRemoveOriginals: Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: removeOriginalImagePreferenceKey)
