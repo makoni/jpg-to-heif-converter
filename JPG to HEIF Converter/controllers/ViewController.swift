@@ -97,8 +97,8 @@ class ViewController: NSViewController {
 			preferredQuality = 0.9
 		}
 		qualityValueLabel.stringValue = "\(preferredQuality)"
-		qualitySlider.maxValue = 1
-		qualitySlider.minValue = 0.1
+		qualitySlider.maxValue = 1 // lossless compression
+		qualitySlider.minValue = 0 // maximum compression
 		qualitySlider.doubleValue = preferredQuality
 		quality = preferredQuality
 	}
