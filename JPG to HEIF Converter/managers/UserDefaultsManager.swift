@@ -25,10 +25,10 @@ struct UserDefaultsManager {
 	
 	static var qualityPreference: Double? {
 		get {
-			return UserDefaults.standard.double(forKey: removeOriginalImagePreferenceKey)
+			return UserDefaults.standard.double(forKey: qualityPreferenceKey)
 		}
 		set {
-			UserDefaults.standard.set(newValue, forKey: removeOriginalImagePreferenceKey)
+			UserDefaults.standard.set(newValue, forKey: qualityPreferenceKey)
 		}
 	}
 	

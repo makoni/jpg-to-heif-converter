@@ -92,7 +92,10 @@ class ViewController: NSViewController {
         
         keepOriginalsCheckbox.state = UserDefaultsManager.preferToRemoveOriginals ? .off : .on
 		
-		let preferredQuality = UserDefaultsManager.qualityPreference ?? 0.9
+		var preferredQuality = UserDefaultsManager.qualityPreference ?? 0.9
+		if preferredQuality <= 0 {
+			preferredQuality = 0.9
+		}
 		qualityValueLabel.stringValue = "\(preferredQuality)"
 		qualitySlider.maxValue = 1
 		qualitySlider.minValue = 0.1
