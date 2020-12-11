@@ -13,6 +13,7 @@
 		2407286A20B313F000E704B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2407286920B313F000E704B8 /* Assets.xcassets */; };
 		2407286D20B313F000E704B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2407286B20B313F000E704B8 /* Main.storyboard */; };
 		2407287720B34D5500E704B8 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407287620B34D5500E704B8 /* MainWindowController.swift */; };
+		24F4F3B325836E6C00FF15A9 /* URL+contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F4F3B225836E6C00FF15A9 /* URL+contains.swift */; };
 		CD181F4A21407A9000D58033 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181F4921407A9000D58033 /* UserDefaultsManager.swift */; };
 		CDF981C92139FB6500EBC90E /* FileTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF981C82139FB6500EBC90E /* FileTypeEnum.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		2407286F20B313F000E704B8 /* JPG_to_HEIF_Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JPG_to_HEIF_Converter.entitlements; sourceTree = "<group>"; };
 		2407287520B31FF300E704B8 /* JPG to HEIF Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JPG to HEIF Converter.entitlements"; sourceTree = "<group>"; };
 		2407287620B34D5500E704B8 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		24F4F3B225836E6C00FF15A9 /* URL+contains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+contains.swift"; sourceTree = "<group>"; };
 		CD181F4921407A9000D58033 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		CDF981C82139FB6500EBC90E /* FileTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 		2407286420B313EE00E704B8 /* JPG to HEIF Converter */ = {
 			isa = PBXGroup;
 			children = (
+				24F4F3B125836E5C00FF15A9 /* extensions */,
 				2429921F232E7C6500477607 /* controllers */,
 				24299221232E7CD000477607 /* managers */,
 				24299220232E7CC700477607 /* models */,
@@ -103,6 +106,14 @@
 			path = managers;
 			sourceTree = "<group>";
 		};
+		24F4F3B125836E5C00FF15A9 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24F4F3B225836E6C00FF15A9 /* URL+contains.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,7 +141,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Sergey Armodin";
 				TargetAttributes = {
 					2407286120B313EE00E704B8 = {
@@ -183,6 +194,7 @@
 			files = (
 				CDF981C92139FB6500EBC90E /* FileTypeEnum.swift in Sources */,
 				CD181F4A21407A9000D58033 /* UserDefaultsManager.swift in Sources */,
+				24F4F3B325836E6C00FF15A9 /* URL+contains.swift in Sources */,
 				2407286820B313EE00E704B8 /* ViewController.swift in Sources */,
 				2407286620B313EE00E704B8 /* AppDelegate.swift in Sources */,
 				2407287720B34D5500E704B8 /* MainWindowController.swift in Sources */,
@@ -240,6 +252,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -301,6 +314,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -335,7 +349,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 345VKAJA5N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "JPG to HEIF Converter/Info.plist";
@@ -344,7 +358,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -358,7 +372,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 345VKAJA5N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "JPG to HEIF Converter/Info.plist";
@@ -367,7 +381,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.05;
+				MARKETING_VERSION = 1.06;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.spaceinbox.JPG-to-HEIF-Converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
