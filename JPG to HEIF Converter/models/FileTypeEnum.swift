@@ -32,7 +32,7 @@ enum FileType {
     }
     
     static var allowedImageTypes: [String] {
-        return ["jpg", "jpeg", "png", "nef", "cr2"]
+        return ["jpg", "jpeg", "png", "nef", "cr2", "sr2", "arw", "dng"]
     }
     
     static var directoryTypes: [String] {
