@@ -30,18 +30,21 @@ class ViewController: NSViewController {
 	
 	/// Open files button
 	@IBOutlet fileprivate weak var openFilesButton: NSButtonCell!
-	
 	/// Indicator
 	@IBOutlet fileprivate weak var progressIndicator: NSProgressIndicator!
-	
 	/// Complete label
 	@IBOutlet fileprivate weak var completeLabel: NSTextField!
-    
     /// Keep Originals checkbox
-    @IBOutlet fileprivate weak var keepOriginalsCheckbox: NSButton!
+	@IBOutlet fileprivate weak var keepOriginalsCheckbox: NSButton!
+	/// Quality value
+	@IBOutlet fileprivate weak var qualityValueLabel: NSTextField!
+	/// Quality slider
+	@IBOutlet fileprivate weak var qualitySlider: NSSlider!
 	
 	
-	// MARK: - Properties
+	
+	// MARK: - Private properties
+	private var quality: Double = 0.9
 	
 	/// Processed images number
 	fileprivate var processedImages: Int = 0 {
@@ -88,6 +91,13 @@ class ViewController: NSViewController {
 		self.converterState = .launched
         
         keepOriginalsCheckbox.state = UserDefaultsManager.preferToRemoveOriginals ? .off : .on
+		
+		let preferredQuality = UserDefaultsManager.qualityPreference ?? 0.9
+		qualityValueLabel.stringValue = "\(preferredQuality)"
+		qualitySlider.maxValue = 1
+		qualitySlider.minValue = 0.1
+		qualitySlider.doubleValue = preferredQuality
+		quality = preferredQuality
 	}
 
 	override var representedObject: Any? {
@@ -96,6 +106,11 @@ class ViewController: NSViewController {
 		}
 	}
 
+	@IBAction func slider(_ sender: Any) {
+		quality = round(qualitySlider.doubleValue * 100) / 100
+		UserDefaultsManager.qualityPreference = quality
+		qualityValueLabel.stringValue = "\(quality)"
+	}
 	
 }
 
@@ -157,7 +172,7 @@ extension ViewController {
         }
         
         group.notify(queue: .main, execute: { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             self.converterState = .complete
         })
         
@@ -240,7 +255,7 @@ extension ViewController {
         group.enter()
         queue.async { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
             guard case .image = FileType(imageUrl) else { return }
             guard let source = CGImageSourceCreateWithURL(imageUrl as CFURL, nil) else { return }
@@ -258,7 +273,8 @@ extension ViewController {
                     fatalError("unable to create CGImageDestination")
             }
             
-            CGImageDestinationAddImageAndMetadata(destination, image, imageMetadata, nil)
+			let options = [kCGImageDestinationLossyCompressionQuality: self.quality]
+			CGImageDestinationAddImageAndMetadata(destination, image, imageMetadata, options as CFDictionary)
             CGImageDestinationFinalize(destination)
             
             if deletingOriginals {
@@ -276,57 +292,55 @@ extension ViewController {
     
 }
 
-extension ViewController {
-    
-    /// Update the contents.json file in an imageset to reflect new file type
-    ///
-    /// - Parameter url: the file path to be processed
-    /// - Parameter group: the DispatchGroup managing conversion work
-    /// - Parameter queue: the serial queue to contain conversion work
-    func updateContentsFile(_ url: URL, group: DispatchGroup, queue: DispatchQueue) {
-        guard case .json = FileType(url) else { return }
-        
-        group.enter()
-        queue.async { [weak self] in
-            
-            do {
-                try self?.updateJSONContents(url)
-            } catch let error {
-                print(error)
-            }
-            
-            group.leave()
-        }
-        
-    }
-    
-    /// Attempt to translate a file path into JSON, process it, and overwrite the file with the result
-    private func updateJSONContents(_ url: URL) throws {
-        guard let json = try JSONSerialization.jsonObject(with: Data(contentsOf: url), options: .mutableLeaves) as? JSON else { return }
-        let processed = try JSONSerialization.data(withJSONObject: processJSON(json), options: .prettyPrinted)
-        try processed.write(to: url)
-        
-    }
-    
-    /// Traverse a json object, changing only the path extension of values keyed for filename
-    private func processJSON(_ json: JSON) -> JSON {
-        var json = json
-        for (k, v) in json {
-            if k == "filename", let value = v as? String {
-                for type in FileType.allowedImageTypes {
-                    let newValue = value.replacingOccurrences(of: ".\(type)", with: ".heic")
-                    if newValue != value {
-                        json[k] = newValue
-                    }
-                }
-            } else if let value = v as? JSON {
-                json[k] = processJSON(value)
-            } else if let values = v as? [JSON] {
-                json[k] = values.compactMap({ return processJSON($0) })
-            }
-        }
-        
-        return json
-    }
-    
+private extension ViewController {
+	/// Update the contents.json file in an imageset to reflect new file type
+	///
+	/// - Parameter url: the file path to be processed
+	/// - Parameter group: the DispatchGroup managing conversion work
+	/// - Parameter queue: the serial queue to contain conversion work
+	func updateContentsFile(_ url: URL, group: DispatchGroup, queue: DispatchQueue) {
+		guard case .json = FileType(url) else { return }
+		
+		group.enter()
+		queue.async { [weak self] in
+			
+			do {
+				try self?.updateJSONContents(url)
+			} catch let error {
+				print(error)
+			}
+			
+			group.leave()
+		}
+		
+	}
+	
+	/// Attempt to translate a file path into JSON, process it, and overwrite the file with the result
+	func updateJSONContents(_ url: URL) throws {
+		guard let json = try JSONSerialization.jsonObject(with: Data(contentsOf: url), options: .mutableLeaves) as? JSON else { return }
+		let processed = try JSONSerialization.data(withJSONObject: processJSON(json), options: .prettyPrinted)
+		try processed.write(to: url)
+		
+	}
+	
+	/// Traverse a json object, changing only the path extension of values keyed for filename
+	func processJSON(_ json: JSON) -> JSON {
+		var json = json
+		for (k, v) in json {
+			if k == "filename", let value = v as? String {
+				for type in FileType.allowedImageTypes {
+					let newValue = value.replacingOccurrences(of: ".\(type)", with: ".heic")
+					if newValue != value {
+						json[k] = newValue
+					}
+				}
+			} else if let value = v as? JSON {
+				json[k] = processJSON(value)
+			} else if let values = v as? [JSON] {
+				json[k] = values.compactMap({ return processJSON($0) })
+			}
+		}
+		
+		return json
+	}
 }
