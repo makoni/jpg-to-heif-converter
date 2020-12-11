@@ -213,7 +213,7 @@
                                                 </constraints>
                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="1" sliderType="linear" id="zgr-ir-Fdm"/>
                                                 <connections>
-                                                    <action selector="slider:" target="XfG-lQ-9wD" id="EKQ-89-6dV"/>
+                                                    <action selector="sliderChanged:" target="XfG-lQ-9wD" id="EKQ-89-6dV"/>
                                                 </connections>
                                             </slider>
                                         </subviews>

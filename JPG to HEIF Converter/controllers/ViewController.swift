@@ -108,18 +108,16 @@ class ViewController: NSViewController {
 		// Update the view, if already loaded.
 		}
 	}
-
-	@IBAction func slider(_ sender: Any) {
-		quality = round(qualitySlider.doubleValue * 100) / 100
-		UserDefaultsManager.qualityPreference = quality
-		qualityValueLabel.stringValue = "\(quality)"
-	}
-	
 }
 
 
 // MARK: - Actions
 extension ViewController {
+	@IBAction func sliderChanged(_ sender: Any) {
+		quality = round(qualitySlider.doubleValue * 100) / 100
+		UserDefaultsManager.qualityPreference = quality
+		qualityValueLabel.stringValue = "\(quality)"
+	}
     
     /// Keep Original Files checkbox checked/unchecked
     ///
@@ -295,6 +293,7 @@ extension ViewController {
     
 }
 
+// MARK: - Private methods
 private extension ViewController {
 	/// Update the contents.json file in an imageset to reflect new file type
 	///
