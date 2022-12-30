@@ -11,3 +11,10 @@ This converter app allows you to open JPG/JPEG/PNG/NEF/CR2 files on Mac and save
 Download DMG: https://github.com/makoni/jpg-to-heif-converter/releases
 
 Home page: https://spaceinbox.me/jpg-to-heif-converter
+
+# Support the app ❤️
+
+- USDT (ERC20): 0xFB78198d9BdDd1CC77a46cc982fB2E13Df4D64D8
+- USDT (TRC20): TT6JSkgQdbsrBxm3HaDsYngYcKkUBtLvhc
+- ETH: 0xFB78198d9BdDd1CC77a46cc982fB2E13Df4D64D8
+- BTC: bc1q3m73k5jhhgv9gljuhle4mp7aa8fv6ukkyw5ym3
