@@ -1,5 +1,7 @@
 # jpg-to-heif-converter
 
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/makoni/jpg-to-heif-converter/total)
+
 macOS app for converting from JPG, JPEG and PNG to HEIF (HEIC)
 
 ![JPG to HEIF converter](https://spaceinbox.me/images/jpg-to-heif-converter.png?3 "Screenshot")
