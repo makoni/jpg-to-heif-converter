@@ -16,7 +16,6 @@ Home page: https://spaceinbox.me/jpg-to-heif-converter
 
 # Support the app ❤️
 
-- USDT (ERC20): 0xFB78198d9BdDd1CC77a46cc982fB2E13Df4D64D8
-- USDT (TRC20): TT6JSkgQdbsrBxm3HaDsYngYcKkUBtLvhc
-- ETH: 0xFB78198d9BdDd1CC77a46cc982fB2E13Df4D64D8
-- BTC: bc1q3m73k5jhhgv9gljuhle4mp7aa8fv6ukkyw5ym3
+<a href="https://nowpayments.io/donation?api_key=e113492a-1722-419a-a9c0-8223aeafc704" target="_blank" rel="noreferrer noopener">
+    <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Cryptocurrency & Bitcoin donation button by NOWPayments">
+</a>
